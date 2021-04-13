@@ -12,15 +12,6 @@
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   
-  "scripts": {
-    ...
-    "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
-    "serve:ssr": "node dist/server",
-    "build:client-and-server-bundles": "ng build --prod && ng run angular.io-example:server",
-     "webpack:server": "webpack --config webpack.server.config.js --progress --colors"
-    ...
-},
-  
   "license": "MIT",
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.12.1",
