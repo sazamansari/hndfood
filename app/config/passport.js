@@ -3,12 +3,12 @@ const User = require('../models/user')
 const bcrypt = require('bcrypt')
 
 function init(passport) {
-    passport.use(new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
+    passport.use(new LocalStrategy({ usernameField: 'phone' }, async (phone, password, done) => {
         // Login
         // check if email exists
-        const user = await User.findOne({ email: email })
+        const user = await User.findOne({ phone: phone })
         if(!user) {
-            return done(null, false, { message: 'No user with this email' })
+            return done(null, false, { message: 'No user with this phone' })
         }
 
         bcrypt.compare(password, user.password).then(match => {

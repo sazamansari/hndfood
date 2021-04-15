@@ -11,9 +11,9 @@ function authController() {
             res.render('auth/login')
         },
         postLogin(req, res, next) {
-            const { email, password }   = req.body
+            const { phone, password }   = req.body
            // Validate request 
-            if(!email || !password) {
+            if(!phone || !password) {
                 req.flash('error', 'All fields are required')
                 return res.redirect('/login')
             }
@@ -40,21 +40,21 @@ function authController() {
             res.render('auth/register')
         },
         async postRegister(req, res) {
-         const { name, email, password }   = req.body
+         const { name, phone, password }   = req.body
          // Validate request 
-         if(!name || !email || !password) {
+         if(!name || !phone || !password) {
              req.flash('error', 'All fields are required')
              req.flash('name', name)
-             req.flash('email', email)
+             req.flash('phone', phone)
             return res.redirect('/register')
          }
 
-         // Check if email exists 
-         User.exists({ email: email }, (err, result) => {
+         // Check if phone exists 
+         User.exists({ phone: phone }, (err, result) => {
              if(result) {
-                req.flash('error', 'Email already taken')
+                req.flash('error', 'phone already taken')
                 req.flash('name', name)
-                req.flash('email', email) 
+                req.flash('phone', phone) 
                 return res.redirect('/register')
              }
          })
@@ -64,7 +64,7 @@ function authController() {
          // Create a user 
          const user = new User({
              name,
-             email,
+             phone,
              password: hashedPassword
          })
 
