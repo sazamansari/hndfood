@@ -37,7 +37,7 @@ export function initAdmin(socket) {
                     <div>${ renderItems(order.items) }</div>
                 </td>
                 <td class="border px-4 py-2">${ order.customerId.name }</td>
-                <td class="border px-4 py-2">${ order.address }</td>
+                 <td class="border px-4 py-2">${ order.address }</td>
                 <td class="border px-4 py-2">
                     <div class="inline-block relative w-64">
                         <form action="/admin/order/status" method="POST">
@@ -58,6 +58,7 @@ export function initAdmin(socket) {
                                     Completed
                                 </option>
                             </select>
+                            
                         </form>
                         <div
                             class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -73,8 +74,12 @@ export function initAdmin(socket) {
                     ${ moment(order.createdAt).format('hh:mm A') }
                 </td>
                 <td class="border px-4 py-2">
-                    ${ order.paymentStatus ? 'paid' : 'Not paid' }
+                    ${ order.phone }
                 </td>
+                <td class="border px-4 py-2">
+                ${ order.phone ? 'sss' :'dd'}
+            </td>
+
             </tr>
         `
         }).join('')
